@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selamat Ulang Tahun 🎂</title>
+  <meta name="description" content="Ucapan ulang tahun yang spesial, untukmu yang selalu ada di pikiranku." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* === DESIGN TOKENS === */
+    :root {
+      --text-xs:   clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm:   clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg:   clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl:   clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl:  clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --text-3xl:  clamp(2.5rem, 1rem + 4vw, 5rem);
+      --text-hero: clamp(3rem, 0.5rem + 7vw, 7rem);
+
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+      --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
+      --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
+      --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+
+      --color-bg:             #fdf8f5;
+      --color-surface:        #fff9f6;
+      --color-surface-2:      #fffcfa;
+      --color-surface-offset: #f8ede6;
+      --color-divider:        #e8d4cc;
+      --color-border:         #dfc8be;
+      --color-text:           #2d1a16;
+      --color-text-muted:     #7a5a52;
+      --color-text-faint:     #c5a49c;
+      --color-text-inverse:   #fff8f5;
+      --color-primary:        #c25b7a;
+      --color-primary-hover:  #a8446a;
+      --color-primary-active: #8c3059;
+      --color-primary-highlight: #f5dce5;
+      --color-accent:         #d4956a;
+      --color-accent-light:   #f7e8da;
+
+      --radius-sm: 0.375rem; --radius-md: 0.5rem;
+      --radius-lg: 0.75rem; --radius-xl: 1rem;
+      --radius-2xl: 1.5rem; --radius-full: 9999px;
+
+      --shadow-sm: 0 1px 2px oklch(0.2 0.05 20 / 0.06);
+      --shadow-md: 0 4px 12px oklch(0.2 0.05 20 / 0.1);
+      --shadow-lg: 0 12px 32px oklch(0.2 0.05 20 / 0.14);
+      --shadow-xl: 0 24px 60px oklch(0.2 0.05 20 / 0.18);
+
+      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+    }
+
+    /* === BASE === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      scroll-behavior: smooth;
+    }
+    body {
+      min-height: 100dvh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    p { text-wrap: pretty; }
+    ::selection { background: oklch(from var(--color-primary) l c h / 0.18); }
+    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* === FLOATING PARTICLES === */
+    #particles-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* === HEADER === */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-4) clamp(var(--space-4), 4vw, var(--space-12));
+      background: oklch(from var(--color-bg) l c h / 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid oklch(from var(--color-primary) l c h / 0.1);
+      transition: box-shadow var(--transition-interactive);
+    }
+    .site-header.scrolled { box-shadow: var(--shadow-sm); }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--color-primary);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .logo svg { flex-shrink: 0; }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+    }
+    .header-nav a {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color var(--transition-interactive);
+    }
+    .header-nav a:hover { color: var(--color-primary); }
+
+    /* === HERO === */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: clamp(var(--space-16), 10vw, var(--space-24)) clamp(var(--space-6), 5vw, var(--space-16));
+      overflow: hidden;
+    }
+
+    .hero-bg-gradient {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 20% 80%, oklch(from var(--color-primary) l c h / 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 80% 20%, oklch(from var(--color-accent) l c h / 0.1) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 40% at 50% 100%, oklch(from var(--color-primary) l c h / 0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 800px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--color-primary);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-6);
+      padding: var(--space-2) var(--space-4);
+      background: var(--color-primary-highlight);
+      border-radius: var(--radius-full);
+      border: 1px solid oklch(from var(--color-primary) l c h / 0.2);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: var(--text-hero);
+      font-weight: 600;
+      line-height: 1.05;
+      color: var(--color-text);
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-6);
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--color-primary);
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-style: italic;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-10);
+      line-height: 1.5;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-4) var(--space-8);
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: var(--radius-full);
+      border: none;
+      cursor: pointer;
+      transition:
+        background var(--transition-interactive),
+        transform var(--transition-interactive),
+        box-shadow var(--transition-interactive);
+    }
+    .hero-cta:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    .hero-cta:active { transform: translateY(0); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: var(--space-8);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--color-text-faint);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      animation: bounce-down 2s ease-in-out infinite;
+    }
+    @keyframes bounce-down {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* === SECTIONS === */
+    .section {
+      position: relative;
+      z-index: 1;
+      padding: clamp(var(--space-16), 8vw, var(--space-24)) clamp(var(--space-6), 6vw, var(--space-16));
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      color: var(--color-primary);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-5);
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--color-primary);
+    }
+
+    /* === IMAGE SECTION 1 === */
+    .image-section-1 {
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-divider);
+      border-bottom: 1px solid var(--color-divider);
+    }
+
+    .image-section-1 .inner {
+      max-width: 1100px;
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(var(--space-8), 5vw, var(--space-16));
+      align-items: center;
+    }
+
+    .image-wrap-1 {
+      position: relative;
+    }
+    .image-wrap-1 img {
+      width: 100%;
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-xl);
+      aspect-ratio: 4/5;
+      object-fit: cover;
+    }
+    .image-wrap-1::before {
+      content: '';
+      position: absolute;
+      inset: -12px -12px 12px 12px;
+      border: 2px solid oklch(from var(--color-primary) l c h / 0.2);
+      border-radius: calc(var(--radius-2xl) + 4px);
+      pointer-events: none;
+      z-index: -1;
+    }
+    .image-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-style: italic;
+      padding: var(--space-4) var(--space-5);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      max-width: 180px;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .text-block-1 {
+      padding-left: clamp(0px, 3vw, var(--space-8));
+    }
+    .text-block-1 h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--color-text);
+      margin-bottom: var(--space-5);
+    }
+    .text-block-1 p {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      line-height: 1.75;
+      margin-bottom: var(--space-4);
+      max-width: 55ch;
+    }
+
+    /* === QUOTE SECTION === */
+    .quote-section {
+      background: linear-gradient(135deg in oklch,
+        var(--color-primary) 0%,
+        oklch(from var(--color-primary) calc(l - 0.1) c calc(h + 15)) 100%);
+      text-align: center;
+      padding: clamp(var(--space-16), 10vw, var(--space-24)) clamp(var(--space-6), 8vw, var(--space-24));
+    }
+    .quote-section blockquote {
+      max-width: 700px;
+      margin-inline: auto;
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--color-text-inverse);
+      line-height: 1.5;
+      position: relative;
+      padding: 0 var(--space-8);
+    }
+    .quote-section blockquote::before,
+    .quote-section blockquote::after {
+      position: absolute;
+      font-size: 5rem;
+      font-family: var(--font-display);
+      color: oklch(from var(--color-text-inverse) l c h / 0.25);
+      line-height: 0;
+      font-style: normal;
+    }
+    .quote-section blockquote::before { content: '\201C'; left: 0; top: 0.5em; }
+    .quote-section blockquote::after  { content: '\201D'; right: 0; bottom: -0.1em; }
+
+    .quote-author {
+      margin-top: var(--space-8);
+      font-size: var(--text-sm);
+      color: oklch(from var(--color-text-inverse) l c h / 0.7);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* === MESSAGE SECTION === */
+    .message-section {
+      max-width: 960px;
+      margin-inline: auto;
+    }
+
+    .message-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-2xl);
+      border: 1px solid var(--color-border);
+      padding: clamp(var(--space-8), 5vw, var(--space-16));
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+    .message-card::after {
+      content: '♡';
+      position: absolute;
+      bottom: -30px;
+      right: var(--space-8);
+      font-size: 10rem;
+      color: oklch(from var(--color-primary) l c h / 0.05);
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    .message-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-8);
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid var(--color-divider);
+    }
+    .message-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--color-primary-highlight);
+      border-radius: var(--radius-full);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .message-meta { flex: 1; }
+    .message-meta strong {
+      display: block;
+      font-size: var(--text-base);
+      font-weight: 500;
+      color: var(--color-text);
+    }
+    .message-meta span {
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+    }
+
+    .letter-text {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      line-height: 1.85;
+      color: var(--color-text-muted);
+      position: relative;
+      z-index: 1;
+    }
+    .letter-text .greeting {
+      font-size: var(--text-xl);
+      font-weight: 600;
+      color: var(--color-text);
+      display: block;
+      margin-bottom: var(--space-6);
+    }
+    .letter-text .highlight {
+      color: var(--color-primary);
+      font-style: italic;
+    }
+    .letter-text .sign-off {
+      display: block;
+      margin-top: var(--space-8);
+      font-style: italic;
+      color: var(--color-text);
+      font-weight: 600;
+    }
+
+    /* === IMAGE SECTION 2 === */
+    .image-section-2 .inner {
+      max-width: 1100px;
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(var(--space-8), 5vw, var(--space-16));
+      align-items: center;
+    }
+
+    .text-block-2 { order: -1; }
+    .text-block-2 h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--color-text);
+      margin-bottom: var(--space-5);
+    }
+    .text-block-2 p {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      line-height: 1.75;
+      margin-bottom: var(--space-4);
+      max-width: 55ch;
+    }
+
+    .image-wrap-2 {
+      position: relative;
+    }
+    .image-wrap-2 img {
+      width: 100%;
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-xl);
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+    .image-caption {
+      margin-top: var(--space-3);
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+      text-align: center;
+      letter-spacing: 0.03em;
+    }
+
+    /* === WISHES GRID === */
+    .wishes-section {
+      background: var(--color-surface-offset);
+      border-top: 1px solid var(--color-divider);
+      border-bottom: 1px solid var(--color-divider);
+    }
+    .wishes-section .inner {
+      max-width: 1000px;
+      margin-inline: auto;
+    }
+    .section-heading-center {
+      text-align: center;
+      margin-bottom: clamp(var(--space-10), 5vw, var(--space-16));
+    }
+    .section-heading-center .section-label { justify-content: center; }
+    .section-heading-center .section-label::before { display: none; }
+    .section-heading-center h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 600;
+      color: var(--color-text);
+      margin-top: var(--space-3);
+      line-height: 1.2;
+    }
+
+    .wishes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-5);
+    }
+    .wish-card {
+      background: var(--color-surface);
+      border: 1px solid oklch(from var(--color-primary) l c h / 0.12);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .wish-card:first-child {
+      grid-column: span 2;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+    .wish-card:first-child .wish-body { flex: 1; }
+    .wish-emoji {
+      font-size: 2rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .wish-card h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--color-text);
+      line-height: 1.3;
+    }
+    .wish-card p {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    /* === COUNTDOWN === */
+    .countdown-section {
+      text-align: center;
+      max-width: 700px;
+      margin-inline: auto;
+    }
+    #countdown-display {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-6);
+      margin-top: var(--space-10);
+      flex-wrap: wrap;
+    }
+    .countdown-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6) var(--space-8);
+      min-width: 100px;
+      box-shadow: var(--shadow-sm);
+    }
+    .countdown-num {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 600;
+      color: var(--color-primary);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .countdown-label {
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .birthday-message {
+      display: none;
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-style: italic;
+      color: var(--color-primary);
+      margin-top: var(--space-8);
+      animation: pulse-scale 1s ease-in-out infinite alternate;
+    }
+    @keyframes pulse-scale {
+      from { transform: scale(1); }
+      to   { transform: scale(1.04); }
+    }
+
+    /* === FOOTER === */
+    .site-footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: clamp(var(--space-10), 6vw, var(--space-20)) clamp(var(--space-6), 5vw, var(--space-12));
+      border-top: 1px solid var(--color-divider);
+      background: var(--color-surface);
+    }
+    .footer-heart {
+      font-size: 2.5rem;
+      margin-bottom: var(--space-4);
+      animation: heartbeat 1.4s ease-in-out infinite;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      15%       { transform: scale(1.15); }
+      30%       { transform: scale(1); }
+      45%       { transform: scale(1.1); }
+    }
+    .footer-text {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-style: italic;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-2);
+    }
+    .footer-sub {
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+      letter-spacing: 0.05em;
+    }
+
+    /* === CONFETTI BUTTON === */
+    .confetti-btn-wrap {
+      text-align: center;
+      margin-top: var(--space-10);
+    }
+    .confetti-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-4) var(--space-10);
+      background: transparent;
+      color: var(--color-primary);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      font-family: var(--font-body);
+      border: 2px solid var(--color-primary);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition:
+        background var(--transition-interactive),
+        color var(--transition-interactive),
+        transform var(--transition-interactive),
+        box-shadow var(--transition-interactive);
+    }
+    .confetti-btn:hover {
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .confetti-btn:active { transform: translateY(0); }
+
+    /* === SCROLL ANIMATIONS === */
+    .fade-in {
+      opacity: 1;
+    }
+    @supports (animation-timeline: scroll()) {
+      .fade-in {
+        opacity: 0;
+        animation: reveal-fade linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 70%;
+      }
+    }
+    @keyframes reveal-fade { to { opacity: 1; } }
+
+    .slide-up {
+      opacity: 1;
+    }
+    @supports (animation-timeline: scroll()) {
+      .slide-up {
+        opacity: 0;
+        clip-path: inset(20% 0 0 0);
+        animation: reveal-slide linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 60%;
+      }
+    }
+    @keyframes reveal-slide { to { opacity: 1; clip-path: inset(0 0 0 0); } }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .header-nav { display: none; }
+      .image-section-1 .inner,
+      .image-section-2 .inner {
+        grid-template-columns: 1fr;
+      }
+      .text-block-2 { order: unset; }
+      .image-wrap-1::before { display: none; }
+      .image-badge {
+        bottom: -12px;
+        right: -8px;
+        font-size: var(--text-base);
+        padding: var(--space-3) var(--space-4);
+        max-width: 140px;
+      }
+      .wishes-grid {
+        grid-template-columns: 1fr;
+      }
+      .wish-card:first-child { grid-column: span 1; }
+      .countdown-block { min-width: 72px; padding: var(--space-4) var(--space-5); }
+      .quote-section blockquote { padding: 0 var(--space-4); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Floating Particles -->
+<canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+<!-- Header -->
+<header class="site-header" id="site-header">
+  <!-- EDIT DI SINI: teks logo -->
+  <a href="#" class="logo" aria-label="Beranda">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <path d="M14 24.5C14 24.5 4 17.5 4 10.5C4 7.46 6.46 5 9.5 5C11.24 5 12.78 5.8 14 7C15.22 5.8 16.76 5 18.5 5C21.54 5 24 7.46 24 10.5C24 17.5 14 24.5 14 24.5Z" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+    HariSpesialmu
+  </a>
+  <nav class="header-nav" aria-label="Navigasi utama">
+    <a href="#pesan">Pesan</a>
+    <a href="#doa">Doa</a>
+    <a href="#countdown">Countdown</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-bg-gradient" aria-hidden="true"></div>
+  <div class="hero-content">
+    <!-- EDIT DI SINI: eyebrow hero -->
+    <div class="hero-eyebrow" aria-label="Label">
+      ✨ &nbsp; Hari yang paling ditunggu
+    </div>
+    <!-- EDIT DI SINI: judul hero -->
+    <h1 class="hero-title" id="hero-title">
+      Selamat<br><em>Ulang Tahun</em>
+    </h1>
+    <!-- EDIT DI SINI: subjudul hero -->
+    <p class="hero-subtitle">
+      Untuk kamu, yang tanpa sadar selalu membuat hariku jadi lebih berwarna.
+    </p>
+    <!-- EDIT DI SINI: teks tombol -->
+    <a href="#pesan" class="hero-cta">
+      Baca pesanku &nbsp; ↓
+    </a>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+    scroll
+  </div>
+</section>
+
+<!-- IMAGE SECTION 1 -->
+<section class="section image-section-1 fade-in" aria-labelledby="section1-title">
+  <div class="inner">
+    <div class="image-wrap-1">
+      <!-- EDIT DI SINI: Gambar 1 -->
+      <!-- Ganti src dengan link gambar kamu sendiri -->
+      <img
+        src="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/2e52ea37-9a2f-4c0b-8df1-0be6f9a3d94a.png"
+        alt="Ilustrasi dua orang duduk bersama di bawah lentera saat golden hour, romantis dan hangat"
+        width="600"
+        height="750"
+        loading="lazy"
+        decoding="async"
+      />
+      <!-- EDIT DI SINI: teks badge di gambar 1 -->
+      <div class="image-badge">Momen yang selalu kurindukan 🌅</div>
+    </div>
+    <div class="text-block-1">
+      <div class="section-label">✦ Tentang kamu</div>
+      <!-- EDIT DI SINI: judul dan paragraf-paragraf -->
+      <h2 id="section1-title">Ada yang berbeda sejak pertama aku mengenalmu</h2>
+      <p>Entah sejak kapan, setiap hari terasa lebih ringan ketika ada kamu. Senyummu itu — iya, yang itu — yang selalu berhasil bikin aku lupa mau ngomong apa.</p>
+      <p>Di hari ulang tahunmu ini, aku ingin kamu tahu bahwa kehadiranmu bukan hal kecil bagiku. Kamu sudah menjadi bagian dari hari-hariku tanpa kamu sadari.</p>
+      <p>Dan hari ini, aku hanya punya satu harapan: semoga semua yang baik di dunia ini selalu menghampirimu.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE SECTION -->
+<section class="quote-section" aria-label="Kutipan">
+  <!-- EDIT DI SINI: isi kutipan dan nama -->
+  <blockquote class="slide-up">
+    "Di antara semua hal indah yang pernah aku temukan, bertemu denganmu adalah yang paling tidak kusangka — dan yang paling kusyukuri."
+  </blockquote>
+  <p class="quote-author">— Untukmu, dengan tulus</p>
+</section>
+
+<!-- MESSAGE / LETTER -->
+<section class="section" id="pesan" aria-labelledby="pesan-title">
+  <div class="message-section">
+    <div class="section-label">✦ Surat kecil</div>
+    <div class="message-card">
+      <div class="message-header">
+        <div class="message-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2">
+            <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <div class="message-meta">
+          <!-- EDIT DI SINI: judul & subjudul surat -->
+          <strong id="pesan-title">Pesan Spesial</strong>
+          <span>Ditulis dengan sepenuh hati, hari ini ✉️</span>
+        </div>
+      </div>
+      <!-- EDIT DI SINI: isi surat (greeting, isi, sign off) -->
+      <div class="letter-text">
+        <span class="greeting">Hai, kamu yang spesial… 🌸</span>
+        Selamat ulang tahun! Semoga hari ini jadi salah satu yang paling berkesan dalam hidupmu. Bukan karena kado atau pesta, tapi karena kamu layak merayakan betapa luar biasanya dirimu.
+        <br><br>
+        Aku nggak tau harus mulai dari mana, karena ada banyak hal yang ingin aku ucapkan. Tapi yang paling penting: <span class="highlight">terima kasih sudah ada.</span> Terima kasih sudah menjadi kamu — dengan semua ketawamu, ceritamu, dan cara kamu melihat dunia yang selalu berhasil membuatku kagum.
+        <br><br>
+        Di hari ulang tahunmu ini, aku doakan kamu selalu sehat, selalu bahagia, dan semua mimpi-mimpi yang kamu simpan dalam hati — semoga satu per satu terwujud dengan cara yang lebih indah dari yang kamu bayangkan.
+        <br><br>
+        <span class="highlight">Kamu berharga. Kamu dicintai. Dan kamu selalu layak untuk hal-hal terbaik.</span>
+        <br><br>
+        Sekali lagi, selamat ulang tahun, ya. Semoga semua yang baik selalu bersamamu. 🎂✨
+        <span class="sign-off">— Seseorang yang selalu mendoakanmu 🌹</span>
+      </div>
+    </div>
+
+    <div class="confetti-btn-wrap">
+      <!-- EDIT DI SINI: teks tombol confetti -->
+      <button class="confetti-btn" id="confetti-btn" aria-label="Rayakan dengan confetti">
+        🎉 &nbsp; Rayakan Bersama!
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE SECTION 2 -->
+<section class="section image-section-2 fade-in" aria-labelledby="section2-title">
+  <div class="inner">
+    <div class="text-block-2">
+      <div class="section-label">✦ Untukmu</div>
+      <!-- EDIT DI SINI: judul & paragraf bagian ini -->
+      <h2 id="section2-title">Semua yang indah, selalu kuinginkan untukmu</h2>
+      <p>Seperti bunga yang mekar di musim yang tepat, aku berharap setiap momen dalam hidupmu selalu penuh dengan hal-hal yang membuat hatimu hangat.</p>
+      <p>Hari ini bukan hanya tentang bertambahnya usia — ini tentang betapa jauh kamu sudah melangkah, betapa banyak yang sudah kamu lewati, dan betapa indahnya perjalanan yang masih menunggumu di depan.</p>
+      <p>Nikmati harimu. Kamu pantas atas semua kebahagiaan ini. 🌺</p>
+    </div>
+    <div class="image-wrap-2">
+      <!-- EDIT DI SINI: Gambar 2 -->
+      <!-- Ganti src dengan link gambar flat-lay / foto kado kamu sendiri -->
+      <img
+        src="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/ddeb7167-97d4-42b0-90a4-24f8062d1b21.png"
+        alt="Flat lay romantis dengan bunga mawar, hadiah, lampu fairy, dan surat cinta di latar belakang putih lembut"
+        width="700"
+        height="525"
+        loading="lazy"
+        decoding="async"
+      />
+      <!-- EDIT DI SINI: caption gambar 2 -->
+      <p class="image-caption">Semua yang indah, untukmu ✨</p>
+    </div>
+  </div>
+</section>
+
+<!-- WISHES GRID -->
+<section class="section wishes-section" id="doa" aria-labelledby="doa-title">
+  <div class="inner">
+    <div class="section-heading-center slide-up">
+      <div class="section-label">✦ Doa-doaku</div>
+      <!-- EDIT DI SINI: judul doa -->
+      <h2 id="doa-title">Harapan yang aku titipkan untukmu</h2>
+    </div>
+    <div class="wishes-grid" role="list">
+      <!-- EDIT DI SINI: isi tiap card doa -->
+      <div class="wish-card" role="listitem">
+        <div class="wish-emoji" aria-hidden="true">🌸</div>
+        <div class="wish-body">
+          <h3>Kebahagiaan yang tulus</h3>
+          <p>Semoga setiap hari kamu bangun dengan senyum, dan setiap malam kamu tidur dengan hati yang damai. Bahagia bukan karena keadaan sempurna, tapi karena kamu tahu cara mensyukurinya.</p>
+        </div>
+      </div>
+      <div class="wish-card" role="listitem">
+        <div class="wish-emoji" aria-hidden="true">💪</div>
+        <h3>Kesehatan & semangat</h3>
+        <p>Semoga tubuhmu selalu kuat, pikiranmu jernih, dan semangatmu tak pernah padam.</p>
+      </div>
+      <div class="wish-card" role="listitem">
+        <div class="wish-emoji" aria-hidden="true">⭐</div>
+        <h3>Mimpi-mimpi terwujud</h3>
+        <p>Semua yang kamu cita-citakan, semoga terbuka jalannya satu per satu, tepat pada waktunya.</p>
+      </div>
+      <div class="wish-card" role="listitem">
+        <div class="wish-emoji" aria-hidden="true">🤝</div>
+        <h3>Dikelilingi orang baik</h3>
+        <p>Semoga kamu selalu punya orang-orang yang tulus di sisimu, yang mendukung tanpa syarat.</p>
+      </div>
+      <div class="wish-card" role="listitem">
+        <div class="wish-emoji" aria-hidden="true">🌈</div>
+        <h3>Hari-hari yang cerah</h3>
+        <p>Bahkan di hari mendung, semoga selalu ada warna yang membuatmu tersenyum kembali.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="section" id="countdown" aria-labelledby="countdown-title">
+  <div class="countdown-section">
+    <div class="section-label" style="justify-content:center;">
+      <span style="display:none"></span>✦ Hari Spesialmu
+    </div>
+    <!-- EDIT DI SINI: judul & deskripsi countdown -->
+    <h2 id="countdown-title" style="font-family:var(--font-display);font-size:var(--text-2xl);font-weight:600;color:var(--color-text);margin-top:var(--space-3);margin-bottom:var(--space-4);">
+      Hitung Mundur Menuju<br>Hari Ulang Tahunmu 🎂
+    </h2>
+    <p style="color:var(--color-text-muted);font-size:var(--text-base);max-width:45ch;margin-inline:auto;">
+      Masukkan tanggal ulang tahun untuk melihat berapa hari lagi hari spesialmu!
+    </p>
+    <div style="margin-top:var(--space-6);display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;align-items:center;">
+      <input
+        type="date"
+        id="bday-input"
+        aria-label="Tanggal ulang tahun"
+        style="
+          padding: var(--space-3) var(--space-4);
+          border: 1.5px solid var(--color-border);
+          border-radius: var(--radius-lg);
+          font-family: var(--font-body);
+          font-size: var(--text-sm);
+          color: var(--color-text);
+          background: var(--color-surface);
+          outline: none;
+          transition: border-color var(--transition-interactive), box-shadow var(--transition-interactive);
+        "
+      />
+      <button
+        onclick="startCountdown()"
+        style="
+          padding: var(--space-3) var(--space-6);
+          background: var(--color-primary);
+          color: var(--color-text-inverse);
+          border: none;
+          border-radius: var(--radius-lg);
+          font-family: var(--font-body);
+          font-size: var(--text-sm);
+          font-weight: 500;
+          cursor: pointer;
+          transition: background var(--transition-interactive), transform var(--transition-interactive);
+        "
+        onmouseover="this.style.background='var(--color-primary-hover)';this.style.transform='translateY(-1px)'"
+        onmouseout="this.style.background='var(--color-primary)';this.style.transform='translateY(0)'"
+      >Hitung! 🎉</button>
+    </div>
+    <div id="countdown-display" aria-live="polite"></div>
+    <!-- EDIT DI SINI: pesan kalau sudah hari H -->
+    <p class="birthday-message" id="bday-msg" aria-live="assertive">
+      🎉 Selamat Ulang Tahun! Hari ini adalah harimu! 🎂✨
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <!-- EDIT DI SINI: teks footer -->
+  <div class="footer-heart" aria-hidden="true">♡</div>
+  <p class="footer-text">Dibuat dengan sepenuh hati, untukmu.</p>
+  <p class="footer-sub">Semoga harimu seindah senyummu — Selamat Ulang Tahun 🌸</p>
+</footer>
+
+<script>
+  /* FLOATING PARTICLES */
+  (function() {
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const COLORS = ['#c25b7a', '#d4956a', '#e8b4c8', '#f7e8da', '#c9a0b8'];
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    function Particle() {
+      this.reset = function() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height + canvas.height;
+        this.size = Math.random() * 4 + 1.5;
+        this.speed = Math.random() * 0.6 + 0.2;
+        this.opacity = Math.random() * 0.4 + 0.1;
+        this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+        this.xDrift = (Math.random() - 0.5) * 0.4;
+        this.shape = Math.random() > 0.5 ? 'circle' : 'heart';
+      };
+      this.reset();
+      this.y = Math.random() * canvas.height;
+    }
+
+    Particle.prototype.draw = function() {
+      ctx.save();
+      ctx.globalAlpha = this.opacity;
+      ctx.fillStyle = this.color;
+      if (this.shape === 'circle') {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      } else {
+        const s = this.size;
+        ctx.translate(this.x, this.y);
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(-s, -s, -s * 2, s * 0.5, 0, s * 2);
+        ctx.bezierCurveTo(s * 2, s * 0.5, s, -s, 0, 0);
+        ctx.fill();
+      }
+      ctx.restore();
+    };
+
+    Particle.prototype.update = function() {
+      this.y -= this.speed;
+      this.x += this.xDrift;
+      if (this.y + this.size * 4 < 0) this.reset();
+    };
+
+    for (let i = 0; i < 60; i++) particles.push(new Particle());
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  })();
+
+  /* STICKY HEADER */
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  /* CONFETTI */
+  document.getElementById('confetti-btn').addEventListener('click', function() {
+    const colors = ['#c25b7a', '#d4956a', '#e8b4c8', '#a8446a', '#f7cfe0', '#ffd700', '#ff69b4'];
+    for (let i = 0; i < 120; i++) {
+      const el = document.createElement('div');
+      const size = Math.random() * 10 + 6;
+      Object.assign(el.style, {
+        position: 'fixed',
+        left: (Math.random() * 100) + 'vw',
+        top: '-20px',
+        width: size + 'px',
+        height: size + 'px',
+        borderRadius: Math.random() > 0.5 ? '50%' : '2px',
+        background: colors[Math.floor(Math.random() * colors.length)],
+        transform: `rotate(${Math.random() * 360}deg)`,
+        zIndex: '9999',
+        pointerEvents: 'none',
+        opacity: '1',
+        transition: 'none',
+      });
+      document.body.appendChild(el);
+
+      const duration = Math.random() * 2000 + 1500;
+      const xEnd = (Math.random() - 0.5) * 400;
+      el.animate([
+        { transform: `translate(0, 0) rotate(0deg)`, opacity: 1 },
+        { transform: `translate(${xEnd}px, ${window.innerHeight + 40}px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+      ], {
+        duration,
+        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        fill: 'forwards'
+      }).onfinish = () => el.remove();
+    }
+  });
+
+  /* COUNTDOWN */
+  function startCountdown() {
+    const input = document.getElementById('bday-input').value;
+    if (!input) return;
+
+    const display = document.getElementById('countdown-display');
+    const msg = document.getElementById('bday-msg');
+    display.innerHTML = '';
+    msg.style.display = 'none';
+
+    function update() {
+      const now = new Date();
+      const target = new Date(input);
+      target.setFullYear(now.getFullYear());
+      if (target < now) target.setFullYear(now.getFullYear() + 1);
+
+      const diff = target - now;
+      if (diff <= 0) {
+        display.innerHTML = '';
+        msg.style.display = 'block';
+        document.getElementById('confetti-btn').click();
+        return;
+      }
+
+      const days  = Math.floor(diff / (1000*60*60*24));
+      const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+      const mins  = Math.floor((diff % (1000*60*60)) / (1000*60));
+      const secs  = Math.floor((diff % (1000*60)) / 1000);
+
+      const units = [
+        { val: days,  label: 'Hari' },
+        { val: hours, label: 'Jam' },
+        { val: mins,  label: 'Menit' },
+        { val: secs,  label: 'Detik' },
+      ];
+
+      display.innerHTML = units.map(u => `
+        <div class="countdown-block">
+          <span class="countdown-num">${String(u.val).padStart(2,'0')}</span>
+          <span class="countdown-label">${u.label}</span>
+        </div>
+      `).join('');
+    }
+
+    update();
+    setInterval(update, 1000);
+  }
+</script>
+
+</body>
+</html>
